@@ -1,7 +1,15 @@
 import 'antd/dist/antd.css'
-import '../styles/vars.css'
-import '../styles/global.css'
+import '../public/styles/vars.css'
+import '../public/styles/global.css'
+import Head from 'next/head';
 
 export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <div className="app-container">
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
+      <Component {...pageProps} />
+    </div>
+  )
 }
