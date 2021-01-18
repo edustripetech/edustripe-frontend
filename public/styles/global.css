@@ -1,8 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,600&display=swap');     
-
-*,
-*:before,
-*:after {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,600&display=swap');
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
@@ -36,23 +33,19 @@ body {
   margin: 0 !important;
 }
 
-.mt-0,
-.my-0 {
+.mt-0, .my-0 {
   margin-top: 0 !important;
 }
 
-.mr-0,
-.mx-0 {
+.mr-0, .mx-0 {
   margin-right: 0 !important;
 }
 
-.mb-0,
-.my-0 {
+.mb-0, .my-0 {
   margin-bottom: 0 !important;
 }
 
-.ml-0,
-.mx-0 {
+.ml-0, .mx-0 {
   margin-left: 0 !important;
 }
 
@@ -60,23 +53,19 @@ body {
   margin: 0.25rem !important;
 }
 
-.mt-1,
-.my-1 {
+.mt-1, .my-1 {
   margin-top: 0.25rem !important;
 }
 
-.mr-1,
-.mx-1 {
+.mr-1, .mx-1 {
   margin-right: 0.25rem !important;
 }
 
-.mb-1,
-.my-1 {
+.mb-1, .my-1 {
   margin-bottom: 0.25rem !important;
 }
 
-.ml-1,
-.mx-1 {
+.ml-1, .mx-1 {
   margin-left: 0.25rem !important;
 }
 
@@ -84,23 +73,19 @@ body {
   margin: 0.5rem !important;
 }
 
-.mt-2,
-.my-2 {
+.mt-2, .my-2 {
   margin-top: 0.5rem !important;
 }
 
-.mr-2,
-.mx-2 {
+.mr-2, .mx-2 {
   margin-right: 0.5rem !important;
 }
 
-.mb-2,
-.my-2 {
+.mb-2, .my-2 {
   margin-bottom: 0.5rem !important;
 }
 
-.ml-2,
-.mx-2 {
+.ml-2, .mx-2 {
   margin-left: 0.5rem !important;
 }
 
@@ -108,23 +93,19 @@ body {
   margin: 1rem !important;
 }
 
-.mt-3,
-.my-3 {
+.mt-3, .my-3 {
   margin-top: 1rem !important;
 }
 
-.mr-3,
-.mx-3 {
+.mr-3, .mx-3 {
   margin-right: 1rem !important;
 }
 
-.mb-3,
-.my-3 {
+.mb-3, .my-3 {
   margin-bottom: 1rem !important;
 }
 
-.ml-3,
-.mx-3 {
+.ml-3, .mx-3 {
   margin-left: 1rem !important;
 }
 
@@ -132,23 +113,19 @@ body {
   margin: 1.5rem !important;
 }
 
-.mt-4,
-.my-4 {
+.mt-4, .my-4 {
   margin-top: 1.5rem !important;
 }
 
-.mr-4,
-.mx-4 {
+.mr-4, .mx-4 {
   margin-right: 1.5rem !important;
 }
 
-.mb-4,
-.my-4 {
+.mb-4, .my-4 {
   margin-bottom: 1.5rem !important;
 }
 
-.ml-4,
-.mx-4 {
+.ml-4, .mx-4 {
   margin-left: 1.5rem !important;
 }
 
@@ -156,23 +133,19 @@ body {
   margin: 3rem !important;
 }
 
-.mt-5,
-.my-5 {
+.mt-5, .my-5 {
   margin-top: 3rem !important;
 }
 
-.mr-5,
-.mx-5 {
+.mr-5, .mx-5 {
   margin-right: 3rem !important;
 }
 
-.mb-5,
-.my-5 {
+.mb-5, .my-5 {
   margin-bottom: 3rem !important;
 }
 
-.ml-5,
-.mx-5 {
+.ml-5, .mx-5 {
   margin-left: 3rem !important;
 }
 
@@ -186,7 +159,7 @@ body {
   justify-content: center;
 }
 
-.logo > svg {
+.logo>svg {
   fill: var(--primaryColor);
 }
 
@@ -198,7 +171,7 @@ body {
   height: 100%;
   box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
   position: absolute;
-  top: 0; 
+  top: 0;
 }
 
 .dashboard-header {
@@ -210,7 +183,7 @@ body {
   padding-left: 18rem;
 }
 
-.ant-menu-item > svg {
+.ant-menu-item>svg {
   vertical-align: sub;
   margin-right: 13px;
 }
@@ -240,25 +213,25 @@ body {
   margin-bottom: 20px;
 }
 
-.sidebar-image-container, .sidebar-image-container > div, .drawer-sidebar-image-container > div {
+.sidebar-image-container, .sidebar-image-container>div, .drawer-sidebar-image-container>div {
   display: inline-block;
 }
 
-.sidebar-image-container > div, .drawer-sidebar-image-container > div {
+.sidebar-image-container>div, .drawer-sidebar-image-container>div {
   vertical-align: middle;
 }
 
-
-.sidebar-image-container > span:first-child, .drawer-sidebar-image-container > span:first-child {
+.sidebar-image-container>span:first-child, .drawer-sidebar-image-container>span:first-child {
   margin-right: 10px;
 }
 
-.sidebar-image-container > div > p, .drawer-sidebar-image-container > div > p  {
+.sidebar-image-container>div>p, .drawer-sidebar-image-container>div>p {
   margin: 0;
 }
 
 .avatar-username {
-  font-family: 'Poppins', sans-serif;;
+  font-family: 'Poppins', sans-serif;
+  ;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -267,7 +240,8 @@ body {
 }
 
 .avatar-email {
-  font-family: 'Poppins', sans-serif;;
+  font-family: 'Poppins', sans-serif;
+  ;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -281,8 +255,9 @@ body {
   justify-content: space-between;
 }
 
-.nav-items > p {
-  font-family: 'Poppins', sans-serif;;
+.nav-items>p {
+  font-family: 'Poppins', sans-serif;
+  ;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -322,32 +297,148 @@ body {
   margin: 24px 0;
 }
 
+/*SAVINGS*/
+
+.fw-normal, .fw-600, .fw-500 {
+  font-family: Poppins;
+  font-style: normal;
+}
+
+.fw-normal {
+  font-weight: normal;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.savings-info {
+  margin: 0;
+  padding: 0;
+}
+
+.savings-info--amount {
+  font-size: 48px;
+  line-height: 72px;
+  letter-spacing: 0.01em;
+  color: #323C47;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.01em;
+}
+
+.savings-info--text {
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.01em;
+}
+
+.savings-info--text__amount {
+  color: #E6CB0D;
+  font-weight: 600;
+}
+
+.savings-info--header {
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: #323C47;
+}
+
+.topup-text {
+  font-size: 24px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #E60D0D;
+}
+
+.add-money-text {
+  font-size: 19px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  color: #323C47;
+  max-width: 15em;
+}
+
+.account-info {
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.01em;
+  color: #334D6E;
+  margin-bottom: 30px
+}
+
+.account-info--text {
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.01em;
+  color: #334D6E;
+}
+
+.btn-save-money {
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  padding: 25px;
+}
+
 .tablet-and-mobile-only {
   display: none;
+}
+
+.ant-table-thead th {
+  text-align: left !important;
+  font-family: Poppins !important;
+  background: none !important;
+  /* border: solid 1px red !important */
+  border-bottom: solid 3px #F0F0F0 !important;
+  border-top: none;
+  color: #9FA2B4 !important;
+}
+
+.ant-table-thead th:first-child {
+  padding-left: 30px !important;
+}
+
+.ant-table-body {
+  overflow-x: hidden!important;
+  overflow-y: auto !important;
+}
+
+.ant-table-tbody>tr>td {
+  font-family: Poppins !important;
+}
+
+.ant-table-tbody>tr>td:nth-child(2) {
+  font-weight: 600 !important;
 }
 
 @media only screen and (max-width: 992px) {
   .nav-items-container {
     display: flex;
-    justify-content: space-between  ;
+    justify-content: space-between;
   }
-
   .ant-layout-content {
     padding: 25px 50px;
     height: 100%;
   }
-
   .navbar {
     padding-left: 0;
   }
-
   .tablet-and-mobile-only {
     display: block;
   }
-
   .menu {
     display: inline-block;
     margin-top: 15px;
   }
-  
 }
