@@ -12,7 +12,7 @@ const Settings = () => {
   return (
     <Layout className="layout-wrapper">
       <Header className="dashboard-header">
-        <Navbar menu={route.pathname} />
+        <Navbar page="Settings" menu={route.pathname} />
       </Header>
       <Layout>
         <Sidebar menu={route.pathname} />
