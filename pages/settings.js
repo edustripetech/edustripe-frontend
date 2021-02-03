@@ -12,7 +12,7 @@ const Settings = () => {
   return (
     <Layout className="layout-wrapper">
       <Header className="dashboard-header">
-        <Navbar menu={route.pathname} />
+        <Navbar page="Settings" menu={route.pathname} />
       </Header>
       <Layout>
         <Sidebar menu={route.pathname} />
@@ -73,9 +73,11 @@ const Settings = () => {
               <Form.Item  labelCol={{ span: 24 }} label="Location">
                 <Input style={{height: '40px', width: '574px'}} type='text' />
               </Form.Item>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <Button type='submit' style={{color: '#fff', background: '#007EFF', borderRadius: '3px', width: '193px', height: '38px', marginTop: '20px' }}>
               Save Changes
             </Button>
+            </div>
             </Form>
           </div>
           <div
