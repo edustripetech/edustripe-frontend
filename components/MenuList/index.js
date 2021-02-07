@@ -16,7 +16,7 @@ const MenuTemplate = ({ data, selectedMenu, selectedKey, handleClick, inlineInde
     } 
 
     menuData.push(
-      <Menu.Item key={index} icon={<Icon />} onClick={() => {router.push(link)}}>
+      <Menu.Item key={index} icon={<Icon color={link === selectedMenu ? "#109CF1": undefined} />} onClick={() => {router.push(link)}}>
           {name}
       </Menu.Item>
     )     

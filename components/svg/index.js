@@ -5,7 +5,8 @@ import ManageChildren from "./ManageChildren";
 import Loan from "./Loan";
 import Savings from "./Savings";
 import Settings from "./Settings";
-import Notification from "./Notification"
+import Notification from "./Notification";
+import { ArrowRightUp } from "./Common";
 
 export {
   Activities,
@@ -15,5 +16,6 @@ export {
   Savings,
   Settings,
   ManageChildren,
-  Notification
+  Notification,
+  ArrowRightUp
 };
