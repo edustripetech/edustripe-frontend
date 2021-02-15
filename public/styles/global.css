@@ -567,11 +567,59 @@ body {
     width: 100%;
     flex-wrap: wrap;
   }
+
   .ant-list-bordered.ant-list-sm  .ant-list-item {
     padding-left: 8px;
     padding-right: 8px;
   }
+
   .ant-radio-button-wrapper {
     padding: 0 10px;
+  }
+
+  .form-input {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    margin: 0 auto !important;
+  }
+
+  .form-input > .input {
+    width: 270px !important;
+    height: 40px !important;
+  }
+
+  .settings-div {
+    /* background-color: red !important; */
+    width: 317px !important;
+    height: 706px !important;
+  }
+  .delete-p {
+    width: 100%;
+  }
+  .profile-action {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .profile-div {
+    flex-wrap: wrap !important;
+  }
+  .input {
+    width: 270px !important;
+  }
+
+  .settings-2-div {
+    width: 317px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .password-div {
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+  }
+
+  .notifications-div {
+    width: 100% !important;
+    margin: 20px 0 0 0 !important;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Sidebar, Navbar } from "../components";
-import Trash from "../components/svg/Trash";
+import { Sidebar, Navbar } from "../../components";
+import Trash from "../../components/svg/Trash";
 import { useRouter } from "next/router";
 import { Layout, Form, Button, Input, Checkbox, Avatar } from 'antd';
 
@@ -18,6 +18,7 @@ const Settings = () => {
         <Sidebar menu={route.pathname} />
         <Content>
           <div
+          className="settings-div"
             style={{
             width: '1042px',
             height: '515px',
@@ -29,21 +30,23 @@ const Settings = () => {
           }}
           >
             <h1>Profile Details</h1>
-            <div style={{display: 'flex', alignItems: 'center'}}>
-              <Avatar size={60}>
-                A
-              </Avatar>
-              <Button
-              style={{
-                margin: '0 20px',
-                width:'193px',
-                height:'38px',
-                color: '#fff',
-                background: '#007EFF',
-                borderRadius: '3px'
-              }}
-              >Upload New Picture</Button>
-              <p style={{color: '#109CF1'}}><Trash/> Delete</p>
+            <div className='profile-div' style={{display: 'flex', alignItems: 'center'}}>
+              <div className='profile-action' >
+                <Avatar size={60}>
+                  A
+                </Avatar>
+                <Button
+                style={{
+                  margin: '0 20px',
+                  width:'193px',
+                  height:'38px',
+                  color: '#fff',
+                  background: '#007EFF',
+                  borderRadius: '3px'
+                }}
+                >Upload New Picture</Button>
+              </div>
+              <p className='delete-p' style={{color: '#109CF1'}}><Trash/> Delete</p>
             </div>
             <Form style={{marginTop: '15px',}}>
               {/* <div style={{display: 'flex', alignItems: 'center'}}>
@@ -54,33 +57,34 @@ const Settings = () => {
                 <Input style={{height: '40px', width: '270px'}} type='text' />
               </Form.Item>
               </div> */}
-              <div style={{display: 'flex', alignItems: 'center'}}>
-              <Form.Item style={{width: '270px', marginRight: '35px'}} labelCol={{ span: 24 }} label="First Name">
-                <Input style={{height: '40px', width: '270px'}} type='text' />
+              <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center'}}>
+              <Form.Item className='form-input' style={{width: '270px', marginRight: '35px'}} labelCol={{ span: 24 }} label="First Name">
+                <Input className='input' style={{height: '40px', width: '270px'}} type='text' />
               </Form.Item>
-              <Form.Item  labelCol={{ span: 24 }} label="Last Name">
-                <Input style={{height: '40px', width: '270px'}} type='text' />
-              </Form.Item>
-              </div>
-              <div style={{display: 'flex', alignItems: 'center'}}>
-              <Form.Item  labelCol={{ span: 24 }} label="Email">
-                <Input style={{height: '40px', width: '270px'}} type='email' />
-              </Form.Item>
-              <Form.Item  labelCol={{ span: 24 }} label="Phone Number">
-                <Input style={{height: '40px', width: '270px'}} type='tel' />
+              <Form.Item  className='form-input' labelCol={{ span: 24 }} label="Last Name">
+                <Input className='input' style={{height: '40px', width: '270px'}} type='text' />
               </Form.Item>
               </div>
-              <Form.Item  labelCol={{ span: 24 }} label="Location">
-                <Input style={{height: '40px', width: '574px'}} type='text' />
+              <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center'}}>
+              <Form.Item  className='form-input' labelCol={{ span: 24 }} label="Email">
+                <Input className='input' style={{height: '40px', width: '270px'}} type='email' />
+              </Form.Item>
+              <Form.Item className='form-input' labelCol={{ span: 24 }} label="Phone Number">
+                <Input className='input' style={{height: '40px', width: '270px'}} type='tel' />
+              </Form.Item>
+              </div>
+              <Form.Item className='form-input' labelCol={{ span: 24 }} label="Location">
+                <Input className='input' style={{height: '40px', width: '574px'}} type='text' />
               </Form.Item>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <Button type='submit' style={{color: '#fff', background: '#007EFF', borderRadius: '3px', width: '193px', height: '38px', marginTop: '20px' }}>
+            <Button type='submit' className='input' style={{color: '#fff', background: '#007EFF', borderRadius: '3px', width: '193px', height: '38px', marginTop: '20px' }}>
               Save Changes
             </Button>
             </div>
             </Form>
           </div>
           <div
+          className='settings-2-div'
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -89,6 +93,7 @@ const Settings = () => {
             }}
            >
             <div
+            className="password-div"
             style={{
               width: '352px',
               height: '422px',
@@ -116,6 +121,7 @@ const Settings = () => {
             </Form>
             </div>
             <div
+            className='notifications-div'
             style={{
               width: '652px',
               height: '422px',
