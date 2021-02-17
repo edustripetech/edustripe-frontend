@@ -48,7 +48,7 @@ const Settings = () => {
               </div>
               <p className='delete-p' style={{color: '#109CF1'}}><Trash/> Delete</p>
             </div>
-            <Form style={{marginTop: '15px',}}>
+            <Form style={{marginTop: '15px'}}>
               {/* <div style={{display: 'flex', alignItems: 'center'}}>
               <Form.Item  labelCol={{ span: 24 }} label="First Name">
                 <Input style={{height: '40px', width: '270px'}} type='text' />

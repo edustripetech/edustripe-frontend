@@ -43,5 +43,10 @@ export default [
     name: "Settings",
     Icon: Settings,
     link: "/settings"
+  },
+  {
+    name: "Log Out",
+    Icon: Dashboard,
+    link: "/login"
   }
 ]
