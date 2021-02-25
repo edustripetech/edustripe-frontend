@@ -633,6 +633,51 @@ body {
     margin-top: 8%;
   }
 
+  /* loans mobile */
+
+  .cards-div {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .loan-card-1 {
+    width: 154px !important;
+    height: 174px !important;
+    margin: 0 10px 0 0 !important;
+    box-sizing: content-box !important;
+    line-height: 2;
+  }
+
+  .loan-card-p-1 {
+    width: 90% !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+  }
+
+  .loan-card-2 {
+    width: 154px !important;
+    height: 174px !important;
+    box-sizing: border-box !important;
+    margin-left: 0 0 0 5px !important;
+  }
+
+  .loan-card-p {
+    font-weight: 500 !important;
+  }
+
+  .loan-card-h1 {
+    font-size: 15px !important;
+    width: 100% !important;
+    font-weight: 500 !important;
+  }
+
+  .loan-card-2-btn {
+    width: 121px !important;
+    height: 36px !important;
+    margin: 8px 0 0 0 !important;
+    font-size: 12px !important;
+    padding: 0 !important;
+  }
 }
 
 .login-page {
