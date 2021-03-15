@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 // import { useRouter } from "next/router";
 import { Layout, Button, Table, Modal, Card, Col, Row, List, Radio } from "antd";
 
-
 const { Header, Content, Sider } = Layout;
 
 const Loan = () => {
@@ -29,7 +28,6 @@ const Loan = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
 
 
   const columns = [
@@ -82,18 +80,18 @@ const Loan = () => {
     return {color: "#334D6E"}
   }
   
-const loanData = [];
-const types = ["increase", "deposit", "withdraw"];
-for (let i = 0; i < 4; i++) {
-  loanData.push({
-    key: i,
-    date:'23, April 2020',
-    type: types[i%types.length],
-    description:'Second term school fees',
-    amount: '50000',
-    blank:''
-  });
-}
+  const loanData = [];
+  const types = ["increase", "deposit", "withdraw"];
+  for (let i = 0; i < 4; i++) {
+    loanData.push({
+      key: i,
+      date:'23, April 2020',
+      type: types[i%types.length],
+      description:'Second term school fees',
+      amount: '50000',
+      blank:''
+    });
+  }
 
   const dataSource = [
     {
@@ -156,7 +154,6 @@ for (let i = 0; i < 4; i++) {
               <p>Loan would be due by <b style={{color: '#E6CB0D', fontWeight: '700'}}>16 Jun 2019</b></p>
             </div>
             </div>
-
             {/* loan card 2 starts */} 
             <div className='loan-card-2' style={{background: '#fff', width: '491px', height: '131px', boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.08)', borderRadius: '5px', marginRight: '60px'}}>
             <div style={{padding: ' 10px 15px'}}>
@@ -184,7 +181,6 @@ for (let i = 0; i < 4; i++) {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', padding: '20px' }}>
             <p style={{fontWeight: '600', fontSize: '15px', color: '#323c47', }}>Loans history</p>
             <p style={{fontWeight: '600', fontSize: '14px', color: '#4B506D',}}><span style={{paddingRight: '12px'}}><Filter/></span>Filter</p>
-
             </div>
           <Table
             className="ant-table-thead desktop-only"

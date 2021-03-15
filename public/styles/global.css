@@ -638,25 +638,28 @@ body {
   .cards-div {
     width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
   }
 
   .loan-card-1 {
-    width: 154px !important;
-    height: 174px !important;
+    min-width: 45% !important;
+    max-width: 45% !important;
+    height: 179px !important;
     margin: 0 10px 0 0 !important;
     box-sizing: content-box !important;
     line-height: 2;
   }
 
   .loan-card-p-1 {
-    width: 90% !important;
+    /* width: 90% !important; */
     font-size: 15px !important;
     font-weight: 500 !important;
   }
 
   .loan-card-2 {
-    width: 154px !important;
-    height: 174px !important;
+    min-width: 45% !important;
+    max-width: 45% !important;
+    height: 179px !important;
     box-sizing: border-box !important;
     margin-left: 0 0 0 5px !important;
   }
