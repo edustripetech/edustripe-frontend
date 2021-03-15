@@ -148,7 +148,7 @@ const Loan = () => {
       </Modal>
           <div className='cards-div' style={{display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between', margin: '20px 0 10px 0'}}>
             <div className='loan-card-1' style={{background: '#fff', width: '491px', height: '131px', boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.08)', borderRadius: '5px'}}>
-            <div style={{padding: ' 10px 15px'}} >
+            <div className='loan-card-1-div' style={{padding: ' 10px 15px'}} >
               <p className='loan-card-p-1' style={{fontWeight: '600', fontSize: '15px', color: '#323c47', margin: '0' }}>Unpaid Loan</p>
               <h1 className='loan-card-h1' style={{fontSize: '48px', color: '#323c47', margin: '0'}}>N65,157</h1>
               <p>Loan would be due by <b style={{color: '#E6CB0D', fontWeight: '700'}}>16 Jun 2019</b></p>
@@ -156,7 +156,7 @@ const Loan = () => {
             </div>
             {/* loan card 2 starts */} 
             <div className='loan-card-2' style={{background: '#fff', width: '491px', height: '131px', boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.08)', borderRadius: '5px', marginRight: '60px'}}>
-            <div style={{padding: ' 10px 15px'}}>
+            <div className='loan-card-2-div' style={{padding: ' 10px 15px'}}>
               <p className='loan-card-p' style={{fontWeight: '600', fontSize: '15px', color: '#323c47', margin: '0 0 10px 0'}}>Apply for loan</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center'}}>
               <h1 className='loan-card-h1' style={{fontSize: '19px', color: '#323c47', margin: '0'}}>You are not qualified for <br/> another loan</h1>
