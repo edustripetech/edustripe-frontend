@@ -646,14 +646,23 @@ body {
     max-width: 45% !important;
     height: 179px !important;
     margin: 0 10px 0 0 !important;
-    box-sizing: content-box !important;
-    line-height: 2;
+    box-sizing: border-box !important;
+    line-height: 1.5;
+  }
+
+  .loan-card-1-div {
+    width: 100%;
+    box-sizing: border-box !important;
+    max-height: 178px !important;
+    font-size: 13px !important;
+    padding: 0;
   }
 
   .loan-card-p-1 {
-    /* width: 90% !important; */
-    font-size: 15px !important;
-    font-weight: 500 !important;
+    width: 100% !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding-bottom: 8px;
   }
 
   .loan-card-2 {
@@ -662,24 +671,35 @@ body {
     height: 179px !important;
     box-sizing: border-box !important;
     margin-left: 0 0 0 5px !important;
+    line-height: 1;
+    font-size: 13px !important;
   }
 
+  /* .loan-card-2-div {
+    width: 100%;
+    box-sizing: border-box !important;
+    max-height: 178px !important;
+    font-size: 13px !important;
+  } */
+
   .loan-card-p {
+    font-size: 13px !important;
     font-weight: 500 !important;
   }
 
   .loan-card-h1 {
-    font-size: 15px !important;
+    font-size: 13px !important;
     width: 100% !important;
     font-weight: 500 !important;
   }
 
   .loan-card-2-btn {
-    width: 121px !important;
+    width: 100% !important;
     height: 36px !important;
     margin: 8px 0 0 0 !important;
-    font-size: 12px !important;
-    padding: 0 !important;
+    font-size: 0.7em !important;
+    padding: 2px !important;
+    box-sizing: border-box !important;
   }
 }
 
