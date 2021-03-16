@@ -126,6 +126,14 @@ const Loan = () => {
       datePaid: '30 Jun 2019',
       status: 'Paid'
     },
+    {
+      key: '3',
+      date: '23 Apr, 2018',
+      amount: '300000',
+      description: 'A quick chat about Funsho’s health at school',
+      datePaid: '30 Jun 2019',
+      status: 'Paid'
+    },
   ];
 
   return (
