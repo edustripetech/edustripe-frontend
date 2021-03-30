@@ -322,7 +322,7 @@ body {
 }
 
 .savings-info--amount {
-  font-size: 48px;
+  font-size: 40px;
   line-height: 72px;
   letter-spacing: 0.01em;
   color: #323C47;
@@ -332,7 +332,7 @@ body {
 }
 
 .savings-info--text {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 19px;
   letter-spacing: 0.01em;
 }
@@ -818,4 +818,99 @@ a {
   display: flex;
   flex-direction: column;
   padding: 0;
+}
+
+.withdraw-btn {
+  background: #FEEBB8 !important;
+  border: 1px solid #FEEBB8 !important;
+  border-radius: 3px;
+  color: #000 !important;
+  font-weight: 300;
+  height: 48px;
+}
+
+.withdraw-btn span {
+  vertical-align: super;
+}
+
+.withdraw-btn svg {
+  margin-right: 6px;
+}
+
+.withdraw-btn-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.continue-btn {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.continue-btn span {
+  font-weight: 500
+}
+
+.modal-title {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 18px;
+}
+
+.modal-container {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.pay-btn {
+  height: 60px;
+}
+
+.pay-back-btn {
+  padding: 0;
+}
+
+.pay-back-btn svg {
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+
+.account-details > p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  
+  color: #6F6F6F;
+}
+
+.account-details > div > h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  margin-right: 10px;
+  letter-spacing: 0.2px;
+
+  color: #000000;
+}
+
+.account-details > div > svg {
+  margin-top: -4px;
+}
+
+.account-details > div {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+.title2-text {
+  font-weight: 600;
+font-size: 24px;
+line-height: 18px;
+color: #000;
 }
