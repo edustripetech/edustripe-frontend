@@ -19,26 +19,26 @@ export default [
     Icon: Loan,
     link: "/loan"
   },
-  {
-    name: "Fees",
-    Icon: Fees,
-    link: "/fees"
-  },
+  // {
+  //   name: "Fees",
+  //   Icon: Fees,
+  //   link: "/fees"
+  // },
   {
     name: "Savings",
     Icon: Savings,
     link: "/savings"
   },
-  {
-    name: "Activities",
-    Icon: Activities,
-    link: "/activities"
-  },
-  {
-    name: "Manage children",
-    Icon: ManageChildren,
-    link: "/manage"
-  },
+  // {
+  //   name: "Activities",
+  //   Icon: Activities,
+  //   link: "/activities"
+  // },
+  // {
+  //   name: "Manage children",
+  //   Icon: ManageChildren,
+  //   link: "/manage"
+  // },
   {
     name: "Settings",
     Icon: Settings,
