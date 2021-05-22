@@ -33,6 +33,7 @@ const Loan = () => {
   const columns = [
     {
       title: 'Date',
+      
       dataIndex: 'date',
     },
     {

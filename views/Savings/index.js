@@ -12,7 +12,7 @@ const Savings = () => {
 
   //modal
 
-  const initialState = [false,false,false,false];
+  const initialState = [false,false,false,false,false,false,false];
   const [modalState, setModalState] = useState(initialState);
 
   const activateModal = (num) => {
@@ -157,7 +157,7 @@ for (let i = 0; i < 4; i++) {
                         </p>
                       </Col>
                       <Col className='withdraw-btn-container'>
-                        <Button type='primary' icon={<Withdraw />} className='withdraw-btn fw-500' onClick={() => activateModal(0)}> 
+                        <Button type='primary' icon={<Withdraw />} className='withdraw-btn fw-500' onClick={() => activateModal(4)} > 
                           Withdraw
                         </Button> 
                       </Col>
@@ -179,7 +179,7 @@ for (let i = 0; i < 4; i++) {
                         <p className='account-info fw-normal'>
                           <span className='account-info--text fw-600'>Acct No:</span> 227282992929
                         </p>
-                        <Button type='primary' size='large' className='btn-save-money fw-500'>Save money</Button>
+                        <Button type='primary' size='large' className='btn-save-money fw-500' onClick={() => activateModal(0)}>Save money</Button>
                       </div>
                   </Card>
                 </Col>
@@ -195,7 +195,7 @@ for (let i = 0; i < 4; i++) {
               <Card className="card-container" style={{border:'none'}}>
                 <div style={{display:'flex', alignItems: 'flex-end', flexWrap: "wrap"}}>
                       <h1 className='savings-info--header fw-500' style={{marginRight:'auto'}}>Savings Plan</h1>
-                      <Button className="newplan-btn"><span>New Plan</span>
+                      <Button className="newplan-btn" onClick={() => activateModal(7)}><span>New Plan</span>
                       <img src="/images/svg/plus.svg" alt="+" />
                       </Button>
                   </div>
@@ -410,6 +410,143 @@ for (let i = 0; i < 4; i++) {
             </Form.Item>
             <Form.Item>
               <Button type="text" className="pay-back-btn" icon={<LeftArrow />} onClick={() => activateModal(2)}>Back
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </Modal>
+      <Modal visible={modalState[4]} footer={null} width={420} onCancel={Reset}>
+        <div className="modal-container">
+          <h2 className="modal-title">Withdraw Savings</h2> 
+          <div>
+            <p>For security reasons, please make sure the account you are withdrawing to belongs to you.</p>
+          </div>
+          <Form
+            form={form}
+            layout="vertical"
+            initialValues={{
+              requiredMark,
+            }}
+            onValuesChange={onRequiredTypeChange}
+            requiredMark={requiredMark}
+          >
+            <Form.Item label="Amount" tooltip="Required">
+              <Input placeholder="1000" />
+            </Form.Item>
+            <Form.Item
+              label="Bank Name"
+              tooltip={{
+                title: 'Required'
+              }}
+            >
+              <Select>
+                <Select.Option value="firstbank">First Bank Plc</Select.Option>
+                <Select.Option value="accessbank">Access Bank Plc</Select.Option>
+                <Select.Option value="providusbank">Providus Bank</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Account Number" tooltip="Required">
+              <Input type="text" />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" className="continue-btn" icon={<LongRightArrow />} block onClick={() => activateModal(5)}>Withdraw Now
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </Modal>
+      <Modal visible={modalState[5]} footer={null} width={420} onCancel={Reset}>
+        <div className="modal-container">
+          <h2 className="modal-title">Confirm Details</h2> 
+          <div>
+            <p>You are about to withdraw <b>₦60,000</b> into the account below</p>
+          </div>
+          <Form
+            form={form}
+            layout="vertical"
+            >
+            <Form.Item>
+              <div className="account-details">
+                <div>
+                  <p>Account holder name</p>
+                </div>
+                <h2>Akindele Funmi</h2>
+              </div>
+              <div className="account-details">
+                <div>
+                  <p>Account number</p>
+                </div>
+                <h2>8323552681</h2>
+              </div>
+              <div className="account-details">
+                <div>
+                  <p>Bank name</p>
+                </div>
+                <h2>Wema</h2>
+              </div>
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" className="continue-btn" icon={<LongRightArrow />} block onClick={() => activateModal(6)}>Continue Withdrawal
+              </Button>
+            </Form.Item>
+            <Form.Item>
+              <Button type="text" className="pay-back-btn" icon={<LeftArrow />} onClick={() => activateModal(4)}>Back
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </Modal>
+      <Modal visible={modalState[6]} footer={null} width={420} onCancel={Reset}>
+        <div className="modal-container">
+          <h2 className="modal-title"></h2> 
+          <Form
+            form={form}
+            layout="vertical"
+            >
+            <Form.Item>
+              <div className="text-center">
+                <Failed />
+              </div>
+            </Form.Item>
+              <p class="text-center title2-text">Withdrawal Failed</p>
+            <p className="text-center">There was an error processing your request</p>
+            <Form.Item>
+              <Button type="primary" className="pay-btn" block onClick={() => activateModal(4)}>Retry
+              </Button>
+            </Form.Item>
+            <Form.Item>
+              <Button type="text" className="pay-back-btn" icon={<LeftArrow />} onClick={() => activateModal(5)}>Back
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </Modal>
+      <Modal visible={modalState[7]} footer={null} width={420} onCancel={Reset}>
+        <div className="modal-container">
+          <h2 className="modal-title">Create new plan</h2> 
+          <Form
+            form={form}
+            layout="vertical"
+            initialValues={{
+              requiredMark,
+            }}
+            onValuesChange={onRequiredTypeChange}
+            requiredMark={requiredMark}
+          >
+            <Form.Item label="Plan name" tooltip="Required">
+              <Input placeholder="" />
+            </Form.Item>
+            <Form.Item label="target Amount" tooltip="Required">
+              <Input placeholder="" />
+            </Form.Item>
+            <Form.Item label="Target Date" tooltip="Required">
+              <Input placeholder="" />
+            </Form.Item>
+            <Form.Item label="Description" tooltip="Required">
+              <Input.TextArea autoSize={{ minRows: 3, maxRows: 3 }} type="text" />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" className="continue-btn" block onClick={Reset}>Continue
               </Button>
             </Form.Item>
           </Form>
