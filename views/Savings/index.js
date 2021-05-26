@@ -11,7 +11,6 @@ const Savings = () => {
   const [modeState, setModeState] = useState("savings");
 
   //modal
-
   const initialState = [false,false,false,false,false,false,false];
   const [modalState, setModalState] = useState(initialState);
 
