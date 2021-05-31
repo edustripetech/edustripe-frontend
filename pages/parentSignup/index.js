@@ -1,21 +1,28 @@
 import React from 'react';
 import Link from "next/link";
-import Input from '../../components/Input'
-import Button from '../../components/Button'
+import { Form, Input, Button } from 'antd';
 import Image from 'next/image';
 
 
 const inputStyle = {
   border: '1px solid #000',
   borderRadius: '5px',
-  height: '2rem',
   padding: '5px',
   outline: 'none',
   width: '301px',
-  height: '64px'
+  height: '40px'
 };
 
 const ParentSignup = () => {
+  const handleSubmit = async (values) => {
+    try {
+      const { email, password } = values;
+      const request = await axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-in', { email, password });
+      console.log({ request });
+    } catch (error) {
+      return error;
+    }
+  }
   return (
     <div className="signup-page">
       <div className="logo">
@@ -25,36 +32,82 @@ const ParentSignup = () => {
       </div>
       <p className="welcome-back">Create a free parent account</p>
       <div className="form-div">
-        <form className="forms">
+        <Form onFinish={handleSubmit} layout="vertical" className="forms">
           <div className="input-div">
-            <Input
-              style={inputStyle}
-              name="fullname"
-              type="text"
-              className="input"
-              label="Fullname:"
-              id="fullname"
-            />
+            <Form.Item
+              name="firstName"
+              label="First Name"
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                { required: true, message: 'Please input your first name' },
+              ]}
+            >
+              <Input
+                style={inputStyle}
+                type="text"
+                className="input"
+                id="firstName"
+              />
+            </Form.Item>
           </div>
           <div className="input-div">
-            <Input
-              style={inputStyle}
-              name="email"
-              type="email"
-              className="input"
-              label="Email:"
-              id="email"
-            />
+            <Form.Item
+              name="lastName"
+              validateTrigger={['onChange', 'onBlur']}
+              label="Last Name"
+              rules={[
+                { required: true, message: 'Please input your last name' },
+              ]}
+            >
+              <Input
+                style={inputStyle}
+                name="lastName"
+                type="text"
+                className="input"
+                label="First Name:"
+                id="lastName"
+              />
+            </Form.Item>
           </div>
           <div className="input-div">
-            <Input
-              style={inputStyle}
-              name="phone"
-              type="phone"
-              className="input"
-              label="Phone number:"
-              id="phone"
-            />
+            <Form.Item
+            label="Email"
+            name="email"
+            validateTrigger={['onChange', 'onBlur']}
+            rules={[
+              { required: true, message: 'Please input an email' },
+              { type: 'email', message: 'Please input a valid email' }
+            ]}
+            >
+              <Input
+                style={inputStyle}
+                name="email"
+                type="email"
+                className="input"
+                label="Email:"
+                id="email"
+              />
+            </Form.Item>
+          </div>
+          <div className="input-div">
+            <Form.Item
+              label="Phone Number"
+              name="phoneNumber"
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                { required: true, message: 'Please input an email' },
+                { type: 'phone', message: 'Please input a valid email' }
+              ]}
+            >
+              <Input
+                style={inputStyle}
+                name="phone"
+                type="phone"
+                className="input"
+                label="Phone number:"
+                id="phoneNumber"
+              />
+            </Form.Item>
           </div>
           <div className="input-div">
             <Input
@@ -79,15 +132,15 @@ const ParentSignup = () => {
                 border: '1px solid #109CF1',
                 outline: 'none',
                 padding: '5px',
-                fontSize: '24px',
+                fontSize: '16px',
                 textAlign: 'center',
                 alignItems: 'center',
                 margin: '15px 0',
                 width: '301px',
-                height: '57px'
+                height: '44px'
               }}
             />
-        </form>
+        </Form>
       </div>
       <div>
         <p className="txt">Already have an account? Click here to <Link href="/login">Sign in</Link></p>
