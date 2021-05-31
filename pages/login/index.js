@@ -1,10 +1,21 @@
 import React from 'react';
 import Link from "next/link";
-import Button from '../../components/Button'
-import Input from '../../components/Input'
+import axios from 'axios';
+import { Form, Input, Button } from 'antd';
+// import Button from '../../components/Button'
+// import Input from '../../components/Input'
 import Image from 'next/image';
 
 const login = () => {
+  const handleSubmit = async (values) => {
+    try {
+      const { email, password } = values;
+      const request = await axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-in', { email, password });
+      console.log({ request });
+    } catch (error) {
+      return error;
+    }
+  }
   return (
     <div className="login-page">
       <div className="logo">
@@ -14,35 +25,51 @@ const login = () => {
       </div>
       <p className="welcome-back">Welcome back</p>
       <div className="form-div">
-        <form className="forms">
+        <Form onFinish={handleSubmit} layout="vertical" className="forms">
           <div className="input-div">
+            <Form.Item
+            label="Email"
+            name="email"
+            validateTrigger={['onChange', 'onBlur']}
+            rules={[
+              { required: true, message: 'Please input an email' },
+              { type: 'email', message: 'Please input a valid email' }
+            ]}
+            >
             <Input
+              type="email"
               style={{
-                border: '1px solid #000',
                 borderRadius: '5px',
                 height: '2rem',
                 padding: '5px',
                 outline: 'none',
                 width: '301px',
-                height: '64px'
+                height: '40px'
               }}
-              name="email"
-              type="email"
               className="input"
               label="Email:"
               id="email"
             />
+            </Form.Item>
           </div>
           <div className="input-div">
+            <Form.Item
+            label="Password"
+              name="password"
+              type="password"
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                { required: true, message: 'Password is required' }
+              ]}
+            >
           <Input
               style={{
-                border: '1px solid #000',
                 borderRadius: '5px',
                 height: '2rem',
                 padding: '5px',
                 outline: 'none',
                 width: '301px',
-                height: '64px'
+                height: '40px'
               }}
               name="password"
               type="password"
@@ -50,30 +77,30 @@ const login = () => {
               label="Password:"
               id="password"
             />
+            </Form.Item>
           </div>
-          <div>
+          <div className="input-div">
+            <Form.Item type="submit">
             <Button
-              type='submit'
+            htmlType="submit"
+              type='primary'
               id='submit'
-              className="submit"
               style={{
-                background: '#109CF1',
-                color: '#fff',
                 cursor: 'pointer',
                 borderRadius: '5px',
-                border: '1px solid #109CF1',
                 outline: 'none',
                 padding: '5px',
-                fontSize: '24px',
+                fontSize: '16px',
                 textAlign: 'center',
                 alignItems: 'center',
-                margin: '15px 0',
+                margin: '10px 0',
                 width: '301px',
-                height: '57px'
+                height: '50px'
               }}
-            />
+            >Submit</Button>
+            </Form.Item>
         </div>
-        </form>
+        </Form>
       </div>
       <div>
         <p className="txt">Don’t have an account? Click here to <Link href="/signup">Sign up</Link></p>
