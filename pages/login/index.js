@@ -10,7 +10,7 @@ const login = () => {
   const handleSubmit = async (values) => {
     try {
       const { email, password } = values;
-      const request = await axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-in', { email, password });
+      const request = await axios.post(`${process.env.API_URL}auth/sign-in`, { email, password });
       console.log({ request });
     } catch (error) {
       return error;
