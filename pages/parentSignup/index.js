@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Form, Input, Button } from 'antd';
 import Image from 'next/image';
 
-
 const inputStyle = {
   border: '1px solid #000',
   borderRadius: '5px',
@@ -16,8 +15,9 @@ const inputStyle = {
 const ParentSignup = () => {
   const handleSubmit = async (values) => {
     try {
-      const { email, password } = values;
-      const request = await axios.post(`${process.env.API_URL}auth/sign-in`, { email, password });
+      console.log('values', values)
+      const { firstName, lastName, email, phonenumber, password, confirmPassword } = values;
+      const request = await axios.post(`${process.env.API_URL}auth/sign-in`, { firstName, lastName, email, phonenumber, password, confirmPassword });
       console.log({ request });
     } catch (error) {
       return error;
@@ -91,25 +91,13 @@ const ParentSignup = () => {
           </div>
           <div className="input-div">
             <Form.Item
-              label="Phone Number"
-              name="phoneNumber"
-              validateTrigger={['onChange', 'onBlur']}
-              rules={[
-                { required: true, message: 'Please input an email' },
-                { type: 'phone', message: 'Please input a valid email' }
-              ]}
-            >
-              <Input
-                style={inputStyle}
-                name="phone"
-                type="phone"
-                className="input"
-                label="Phone number:"
-                id="phoneNumber"
-              />
-            </Form.Item>
-          </div>
-          <div className="input-div">
+                label="Password"
+                name="password"
+                validateTrigger={['onChange', 'onBlur']}
+                rules={[
+                  { required: true, message: 'Please input a password' }
+                ]}
+              >
             <Input
               style={inputStyle}
               name="password"
@@ -118,12 +106,34 @@ const ParentSignup = () => {
               label="Password:"
               id="password"
             />
+            </Form.Item>
           </div>
+          <div className="input-div">
+            <Form.Item
+                label="Confirm Password"
+                name="confirmPassword"
+                validateTrigger={['onChange', 'onBlur']}
+                rules={[
+                  { required: true, message: 'Please input a password' }
+                ]}
+              >
+            <Input
+              style={inputStyle}
+              name="password"
+              type="password"
+              className="input"
+              label="Password:"
+              id="password"
+            />
+            </Form.Item>
+          </div>
+          <Form.Item>
             <Button
               label='Register'
               type='submit'
               id='submit'
               className="submit"
+              onClick={handleSubmit}
               style={{
                 background: '#109CF1',
                 color: '#fff',
@@ -139,7 +149,8 @@ const ParentSignup = () => {
                 width: '301px',
                 height: '44px'
               }}
-            />
+            >Register</Button>
+          </Form.Item>
         </Form>
       </div>
       <div>

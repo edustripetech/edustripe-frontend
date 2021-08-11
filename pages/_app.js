@@ -3,13 +3,21 @@ import '../public/styles/vars.css'
 import '../public/styles/global.css'
 import Head from 'next/head';
 
-export default function MyApp({ Component, pageProps }) {
+import { getToken } from '../api/helpers';
+import {wrapper} from '../store/store.js';
+
+function MyApp ({ Component, pageProps }) {
   return (
     <div className="app-container">
-      <Head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-      </Head>
-      <Component {...pageProps} />
+        <Head>
+          <link rel="shortcut icon" href="/favicon.ico" />
+        </Head>
+        {/* {
+          getToken() ? <Component {...pageProps} /> : <Component {...pageProps} /> 
+        } */}
+        <Component {...pageProps} />
     </div>
   )
 }
+
+export default wrapper.withRedux(MyApp);
