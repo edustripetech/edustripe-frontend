@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import { Sidebar, Navbar } from "../../components";
 import Trash from "../../components/svg/Trash";
 import { useRouter } from "next/router";
@@ -8,6 +9,25 @@ const { Header, Content, Sider } = Layout;
 
 const Settings = () => {
   const route = useRouter();
+
+  useEffect(() => {
+    async function loadProfile() {
+      await fetchProfile()
+    }
+    loadProfile()
+  }, [])
+
+  const fetchProfile = async () => {
+    try {
+      console.log('hereee')
+      const request = await axios.get(`${process.env.API_URL}users/profile`);
+      console.log('>>>>>>',request);
+    } catch (error) {
+      console.log('>error>',error);
+
+      return error;
+    }
+  }
 
   return (
     <Layout className="layout-wrapper">

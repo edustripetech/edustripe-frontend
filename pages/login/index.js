@@ -2,16 +2,23 @@ import React from 'react';
 import Link from "next/link";
 import axios from 'axios';
 import { Form, Input, Button } from 'antd';
+import { connect } from 'react-redux';
+import { useRouter } from 'next/router'
+
+import { login } from '../../store/modules/auth';
 // import Button from '../../components/Button'
 // import Input from '../../components/Input'
 import Image from 'next/image';
 
-const login = () => {
+const loginPage = () => {
+  const router = useRouter()
   const handleSubmit = async (values) => {
     try {
       const { email, password } = values;
       const request = await axios.post(`${process.env.API_URL}auth/sign-in`, { email, password });
       console.log({ request });
+      router.push('/')
+      // router.push('/', undefined, { shallow: true })
     } catch (error) {
       return error;
     }
@@ -109,4 +116,10 @@ const login = () => {
   );
 }
 
-export default login;
+// export default loginPage;
+
+const mapStateToProps = ({ auth: { isLoading } }) => ({
+  isLoading,
+});
+
+export default connect(mapStateToProps, { login })(loginPage);
