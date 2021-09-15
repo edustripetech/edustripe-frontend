@@ -33,8 +33,11 @@ const ParentSignup = () => {
         } else {
           return console.log('Error response', response);
         }
+      }).catch(error => {
+        console.log('here')
+        console.log('err',error)
       });
-      throw new Error('First one')
+      // throw new Error('First one')
     } catch (error) {
       let e = new Error(`Rethrowing the "${error.message}" error`)
       e.original_error = error

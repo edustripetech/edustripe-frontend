@@ -36,6 +36,9 @@ const login = () => {
         } else {
           return console.log('Error response', response);
         }
+      }).catch(error => {
+        console.log('here')
+        console.log('err',error)
       });
     } catch (error) {
       if (error) {
