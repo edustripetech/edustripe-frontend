@@ -1,7 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 import Link from "next/link";
 import { Form, Input, Button } from 'antd';
 import Image from 'next/image';
+
 
 const inputStyle = {
   border: '1px solid #000',
@@ -13,16 +15,35 @@ const inputStyle = {
 };
 
 const ParentSignup = () => {
+
   const handleSubmit = async (values) => {
     try {
-      console.log('values', values)
-      const { firstName, lastName, email, phonenumber, password, confirmPassword } = values;
-      const request = await axios.post(`${process.env.API_URL}auth/sign-in`, { firstName, lastName, email, phonenumber, password, confirmPassword });
-      console.log({ request });
+      const { firstName, lastName, email, password, confirmPassword } = values;
+      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, password, confirmPassword }).then(response => {
+        if(response.data.status === 'success') {
+          const { user, accessToken } = response.data.data;
+          localStorage.setItem('user_token', accessToken)
+          localStorage.setItem('firstname', user.firstName)
+          localStorage.setItem('lastname', user.lastName)
+          localStorage.setItem('email', user.email)
+
+          console.log('data', response.data)
+          router.push('/')
+          return response.data.data;
+        } else {
+          return console.log('Error response', response);
+        }
+      });
+      throw new Error('First one')
     } catch (error) {
-      return error;
+      let e = new Error(`Rethrowing the "${error.message}" error`)
+      e.original_error = error
+      e.stack = e.stack.split('\n').slice(0,2).join('\n') + '\n' + error.stack
+      console.log('eeee',e)
+      throw e
     }
   }
+
   return (
     <div className="signup-page">
       <div className="logo">
@@ -91,13 +112,32 @@ const ParentSignup = () => {
           </div>
           <div className="input-div">
             <Form.Item
-                label="Password"
-                name="password"
-                validateTrigger={['onChange', 'onBlur']}
-                rules={[
-                  { required: true, message: 'Please input a password' }
-                ]}
-              >
+              label="Phone Number"
+              name="phoneNumber"
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                { required: true, message: 'Please input an email' },
+              ]}
+            >
+              <Input
+                style={inputStyle}
+                name="phone"
+                type="phone"
+                className="input"
+                label="Phone number:"
+                id="phoneNumber"
+              />
+            </Form.Item>
+          </div>
+          <div className="input-div">
+          <Form.Item
+              label="Password"
+              name="password"
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                { required: true, message: 'Please input a password' },
+              ]}
+            >
             <Input
               style={inputStyle}
               name="password"
@@ -105,52 +145,51 @@ const ParentSignup = () => {
               className="input"
               label="Password:"
               id="password"
+            />
+            </Form.Item>
+          </div>
+
+          <div className="input-div">
+          <Form.Item
+              label="Confirm Password"
+              name="confirmPassword"
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                { required: true, message: 'Confirm your password' },
+              ]}
+            >
+            <Input
+              style={inputStyle}
+              name="confirmPassword"
+              type="password"
+              className="input"
+              label="Confirm Password;"
+              id="confirmPassword"
             />
             </Form.Item>
           </div>
           <div className="input-div">
-            <Form.Item
-                label="Confirm Password"
-                name="confirmPassword"
-                validateTrigger={['onChange', 'onBlur']}
-                rules={[
-                  { required: true, message: 'Please input a password' }
-                ]}
-              >
-            <Input
-              style={inputStyle}
-              name="password"
-              type="password"
-              className="input"
-              label="Password:"
-              id="password"
-            />
-            </Form.Item>
-          </div>
-          <Form.Item>
+            <Form.Item type="submit">
             <Button
-              label='Register'
-              type='submit'
-              id='submit'
-              className="submit"
               onClick={handleSubmit}
+              htmlType="submit"
+              type='primary'
+              id='submit'
               style={{
-                background: '#109CF1',
-                color: '#fff',
                 cursor: 'pointer',
                 borderRadius: '5px',
-                border: '1px solid #109CF1',
                 outline: 'none',
                 padding: '5px',
                 fontSize: '16px',
                 textAlign: 'center',
                 alignItems: 'center',
-                margin: '15px 0',
+                margin: '10px 0',
                 width: '301px',
-                height: '44px'
+                height: '50px'
               }}
-            >Register</Button>
-          </Form.Item>
+            >Submit</Button>
+            </Form.Item>
+        </div>
         </Form>
       </div>
       <div>

@@ -25,11 +25,11 @@ const SideBar = ({ menu }) => {
         </div>
         <div className="sidebar-image-container">
           <Avatar size={50}>
-              A
+          {`${typeof window !== "undefined" ? localStorage.lastname[0].toUpperCase() : ''}`}
           </Avatar>
           <div>
-            <p className="avatar-username">Akindele Funmi</p>
-            <p className="avatar-email">A.funmi@gmail.com</p>
+            <p className="avatar-username">{`${typeof window !== "undefined" ? localStorage.lastname.toUpperCase() : ''}`}</p>
+            <p className="avatar-email">{`${typeof window !== "undefined" ? localStorage.email : ''}`}</p>
           </div>
         </div>
       </div>

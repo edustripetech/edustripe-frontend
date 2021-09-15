@@ -4,6 +4,8 @@ import { Form, Select, InputNumber, Switch, Slider, Button } from 'antd'
 import DatePicker from '../components/DatePicker'
 
 import { SmileFilled } from '@ant-design/icons'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import Link from 'next/link'
 

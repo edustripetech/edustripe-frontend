@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-
+import Router from "next/router";
 import { authLogin } from '../../api/auth';
 import { setToken, encodeUserObject } from '../../api/helpers';
 import { http } from '../../api/client';
@@ -8,7 +8,7 @@ export const REQUEST_PROCESS = 'REQUEST_PROCESS';
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
 export const REQUEST_ERROR = 'REQUEST_ERROR';
 
-export const login = (userPayload, history) => async dispatch => {
+export const login = (userPayload) => async (dispatch) => {
   try {
     dispatch({ type: REQUEST_PROCESS });
     const {
@@ -17,8 +17,8 @@ export const login = (userPayload, history) => async dispatch => {
     setToken(token);
     http.defaults.headers.Authorization = `Bearer ${token}`;
     encodeUserObject(user);
-    await dispatch({ type: REQUEST_SUCCESS, payload: user });
-    history.push('/');
+    Router.push('/');
+    dispatch({ type: REQUEST_SUCCESS, payload: user });
   } catch (error) {
     if (error.response) {
       toast.error(`${error.response.data.message}`, {

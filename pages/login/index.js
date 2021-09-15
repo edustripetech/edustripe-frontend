@@ -1,26 +1,47 @@
-import React from 'react';
-import Link from "next/link";
+import React, { useEffect} from 'react';
 import axios from 'axios';
+import Link from "next/link";
 import { Form, Input, Button } from 'antd';
-import { connect } from 'react-redux';
-import { useRouter } from 'next/router'
-
-import { login } from '../../store/modules/auth';
+import { useRouter } from "next/router";
 // import Button from '../../components/Button'
 // import Input from '../../components/Input'
 import Image from 'next/image';
 
-const loginPage = () => {
+const login = () => {
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if(localStorage.user_token) {
+        localStorage.clear();
+      }
+    }
+  }, [])
+
   const router = useRouter()
+
   const handleSubmit = async (values) => {
     try {
       const { email, password } = values;
-      const request = await axios.post(`${process.env.API_URL}auth/sign-in`, { email, password });
-      console.log({ request });
-      router.push('/')
-      // router.push('/', undefined, { shallow: true })
+      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-in', { email, password }).then(response => {
+        if(response.data.status === 'success') {
+          const { user, accessToken } = response.data.data;
+          localStorage.setItem('user_token', accessToken)
+          localStorage.setItem('firstname', user.firstName)
+          localStorage.setItem('lastname', user.lastName)
+          localStorage.setItem('email', user.email)
+
+          console.log('data', response.data)
+          router.push('/')
+          return response.data.data;
+        } else {
+          return console.log('Error response', response);
+        }
+      });
     } catch (error) {
-      return error;
+      if (error) {
+        console.log(error.message);
+        return error;
+      }
     }
   }
   return (
@@ -44,6 +65,7 @@ const loginPage = () => {
             ]}
             >
             <Input
+              autoComplete='none'
               type="email"
               style={{
                 borderRadius: '5px',
@@ -89,7 +111,8 @@ const loginPage = () => {
           <div className="input-div">
             <Form.Item type="submit">
             <Button
-            htmlType="submit"
+              onClick={handleSubmit}
+              htmlType="submit"
               type='primary'
               id='submit'
               style={{
@@ -116,10 +139,4 @@ const loginPage = () => {
   );
 }
 
-// export default loginPage;
-
-const mapStateToProps = ({ auth: { isLoading } }) => ({
-  isLoading,
-});
-
-export default connect(mapStateToProps, { login })(loginPage);
+export default login;
