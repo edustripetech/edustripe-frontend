@@ -1,8 +1,8 @@
 import React, { useEffect} from 'react';
 import axios from 'axios';
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { Form, Input, Button } from 'antd';
-import { useRouter } from "next/router";
 // import Button from '../../components/Button'
 // import Input from '../../components/Input'
 import Image from 'next/image';
@@ -29,15 +29,12 @@ const login = () => {
           localStorage.setItem('firstname', user.firstName)
           localStorage.setItem('lastname', user.lastName)
           localStorage.setItem('email', user.email)
-
-          console.log('data', response.data)
           router.push('/')
           return response.data.data;
         } else {
           return console.log('Error response', response);
         }
       }).catch(error => {
-        console.log('here')
         console.log('err',error)
       });
     } catch (error) {

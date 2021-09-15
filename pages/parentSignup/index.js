@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { Form, Input, Button } from 'antd';
 import Image from 'next/image';
@@ -16,34 +17,32 @@ const inputStyle = {
 
 const ParentSignup = () => {
 
+  const router = useRouter()
+
   const handleSubmit = async (values) => {
     try {
-      const { firstName, lastName, email, password, confirmPassword } = values;
-      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, password, confirmPassword }).then(response => {
+      const { firstName, lastName, phoneNumber, email, password, confirmPassword } = values;
+      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, phoneNumber, password, confirmPassword }).then(response => {
         if(response.data.status === 'success') {
           const { user, accessToken } = response.data.data;
           localStorage.setItem('user_token', accessToken)
           localStorage.setItem('firstname', user.firstName)
           localStorage.setItem('lastname', user.lastName)
           localStorage.setItem('email', user.email)
-
-          console.log('data', response.data)
           router.push('/')
           return response.data.data;
         } else {
           return console.log('Error response', response);
         }
       }).catch(error => {
-        console.log('here')
         console.log('err',error)
       });
       // throw new Error('First one')
     } catch (error) {
-      let e = new Error(`Rethrowing the "${error.message}" error`)
-      e.original_error = error
-      e.stack = e.stack.split('\n').slice(0,2).join('\n') + '\n' + error.stack
-      console.log('eeee',e)
-      throw e
+      if (error) {
+        console.log(error.message);
+        return error;
+      }
     }
   }
 
@@ -88,7 +87,7 @@ const ParentSignup = () => {
                 name="lastName"
                 type="text"
                 className="input"
-                label="First Name:"
+                label="Last Name:"
                 id="lastName"
               />
             </Form.Item>
@@ -124,8 +123,8 @@ const ParentSignup = () => {
             >
               <Input
                 style={inputStyle}
-                name="phone"
-                type="phone"
+                name="phoneNumber"
+                type="text"
                 className="input"
                 label="Phone number:"
                 id="phoneNumber"
