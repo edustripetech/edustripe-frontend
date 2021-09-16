@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import router, { useRouter } from "next/router";
 import sidebarData from "../../utils/sidebarData";
 import { Layout, Space, Avatar, Typography } from "antd";
 import MenuList from "../MenuList";
@@ -8,6 +9,16 @@ import Link from "next/link";
 const { Sider } = Layout;
 
 const SideBar = ({ menu }) => {
+const route = useRouter()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if(!localStorage.user_token) {
+        route.push('/login');
+      }
+    }
+  }, [])
+
   return (
     <Sider
       className="sidebar"
@@ -25,11 +36,11 @@ const SideBar = ({ menu }) => {
         </div>
         <div className="sidebar-image-container">
           <Avatar size={50}>
-              A
+          {`${typeof window !== "undefined" && localStorage.lastname ? localStorage.lastname[0].toUpperCase() : ''}`}
           </Avatar>
           <div>
-            <p className="avatar-username">Akindele Funmi</p>
-            <p className="avatar-email">A.funmi@gmail.com</p>
+            <p className="avatar-username">{`${typeof window !== "undefined" && localStorage.lastname ? localStorage.lastname.toUpperCase() : ''}`}</p>
+            <p className="avatar-email">{`${typeof window !== "undefined" && localStorage.lastname ? localStorage.email : ''}`}</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Sidebar, Navbar, Button } from "../../components";
 import { ArrowRightUp } from "../../components/svg";
 import { useRouter } from "next/router";
@@ -10,6 +10,20 @@ const { Title } = Typography;
 const Dashboard = () => {
   const route = useRouter();
 
+  const user = {};
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if(localStorage.user_token) {
+        user.firstname = localStorage.firstname
+        user.lastname = localStorage.lastname
+        user.email = localStorage.email
+      } else {
+        route.push('/login');
+      }
+    }
+  }, [])
+
   return (
     <Layout className="layout-wrapper">
       <Header className="dashboard-header">
@@ -19,12 +33,12 @@ const Dashboard = () => {
       <Layout>
         <Sidebar menu={route.pathname} />
         <Content>
-          <h3>Welcome back <strong>Akindele Funmi</strong></h3>
+          <h3>{`Welcome back ${typeof window !== "undefined" ? localStorage.lastname : ''}`}</h3>
           <Row gutter={[16,16]}>
               <Col xl={6} lg={10} md={12} xs={24}>
                 <Card style={{ width: "100%", height: "232px", boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.08)' }}>
                   <h5 className="card-header"><strong>Savings Balance</strong></h5>
-                  <Title level={3}>₦170,300</Title>
+                  <Title level={3}>₦0.0</Title>
                   <p><span style={{
                     color: "#E6CB0D",
                     fontWeight: "500",
