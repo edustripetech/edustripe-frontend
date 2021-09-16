@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -8,6 +8,8 @@ import { Form, Input, Button } from 'antd';
 import Image from 'next/image';
 
 const login = () => {
+  const [errroMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter()
 
   useEffect(() => {
@@ -20,9 +22,11 @@ const login = () => {
 
   const handleSubmit = async (values) => {
     try {
+      setIsLoading(true);
       const { email, password } = values;
       axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-in', { email, password }).then(response => {
         if(response.data.status === 'success') {
+          setIsLoading(false)
           const { user, accessToken } = response.data.data;
           localStorage.setItem('user_token', accessToken)
           localStorage.setItem('firstname', user.firstName)
@@ -34,6 +38,8 @@ const login = () => {
           return console.log('Error response', response);
         }
       }).catch(error => {
+        setErrorMessage('Login failed, check your details and try again')
+        setIsLoading(false)
         console.log('err',error)
       });
     } catch (error) {
@@ -126,9 +132,10 @@ const login = () => {
                 width: '301px',
                 height: '50px'
               }}
-            >Submit</Button>
+            >{!isLoading ? 'Submit' : 'Loading...'}</Button>
             </Form.Item>
         </div>
+        <div><p style={{color:'red'}} >{errroMessage}</p></div>
         </Form>
       </div>
       <div>

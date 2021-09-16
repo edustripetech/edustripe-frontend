@@ -1,11 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Form, Input, Button } from 'antd';
-import { toast } from 'react-toastify';
 import Image from 'next/image';
-
 
 const inputStyle = {
   border: '1px solid #000',
@@ -17,27 +15,30 @@ const inputStyle = {
 };
 
 const ParentSignup = () => {
-
+  const [errroMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter()
-  const notify = () => toast("Wow so easy!");
 
   const handleSubmit = async (values) => {
     try {
+      setIsLoading(true);
       const { firstName, lastName, phoneNumber, email, password, confirmPassword } = values;
       axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, phoneNumber, password, confirmPassword }).then(response => {
         if(response.data.status === 'success') {
+          setIsLoading(false)
           const { user, accessToken } = response.data.data;
           localStorage.setItem('user_token', accessToken)
           localStorage.setItem('firstname', user.firstName)
           localStorage.setItem('lastname', user.lastName)
           localStorage.setItem('email', user.email)
-          notify
           router.push('/')
           return response.data.data;
         } else {
           return console.log('Error response', response);
         }
       }).catch(error => {
+        setErrorMessage('Signup failed, check your details and try again')
+        setIsLoading(false)
         console.log('err',error)
       });
     } catch (error) {
@@ -191,9 +192,10 @@ const ParentSignup = () => {
                 width: '301px',
                 height: '50px'
               }}
-            >Submit</Button>
+            >{!isLoading ? 'Submit' : 'Loading...'}</Button>
             </Form.Item>
         </div>
+        <div><p style={{color: 'red'}} >{errroMessage}</p></div>
         </Form>
       </div>
       <div>
