@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Form, Input, Button } from 'antd';
+import { toast } from 'react-toastify';
 import Image from 'next/image';
 
 
@@ -18,6 +19,7 @@ const inputStyle = {
 const ParentSignup = () => {
 
   const router = useRouter()
+  const notify = () => toast("Wow so easy!");
 
   const handleSubmit = async (values) => {
     try {
@@ -29,6 +31,7 @@ const ParentSignup = () => {
           localStorage.setItem('firstname', user.firstName)
           localStorage.setItem('lastname', user.lastName)
           localStorage.setItem('email', user.email)
+          notify
           router.push('/')
           return response.data.data;
         } else {
@@ -37,7 +40,6 @@ const ParentSignup = () => {
       }).catch(error => {
         console.log('err',error)
       });
-      // throw new Error('First one')
     } catch (error) {
       if (error) {
         console.log(error.message);

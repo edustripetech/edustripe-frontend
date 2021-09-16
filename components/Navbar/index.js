@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { Drawer, Button, Avatar } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { Notification } from "../svg"
@@ -9,6 +10,23 @@ import Image from 'next/image';
 
 const NavBar = ({ menu, page="Dashboard" }) => {
   const [visible, setVisible] = useState(false);
+  const router = useRouter()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if(!localStorage.user_token) {
+        router.push('/login');
+      }
+    }
+  }, [])
+
+  const checkStorage = (string) => {
+    if (typeof(window) !== undefined) {
+      if (localStorage.user_token) {
+        return true;
+      } return false;
+    }
+  }
   
   return (
     <nav className="navbar">
@@ -42,11 +60,11 @@ const NavBar = ({ menu, page="Dashboard" }) => {
           </div>
           <div className="drawer-sidebar-image-container">
             <Avatar size={50}>
-            {`${typeof window !== "undefined" ? localStorage.lastname[0].toUpperCase() : ''}`}
+            {`${typeof window !== "undefined" && localStorage.lastname ? localStorage.lastname[0].toUpperCase() : ''}`}
             </Avatar>
             <div>
-              <p className="avatar-username">{`${typeof window !== "undefined" ? localStorage.lastname.toUpperCase() : ''}`}</p>
-              <p className="avatar-email">{`${typeof window !== "undefined" ? localStorage.email : ''}`}</p>
+              <p className="avatar-username">{`${typeof window !== "undefined" && localStorage.lastname ? localStorage.lastname.toUpperCase() : ''}`}</p>
+              <p className="avatar-email">{`${typeof window !== "undefined" && localStorage.lastname ? localStorage.email : ''}`}</p>
             </div>
           </div>
         </div>

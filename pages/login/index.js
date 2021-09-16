@@ -8,6 +8,7 @@ import { Form, Input, Button } from 'antd';
 import Image from 'next/image';
 
 const login = () => {
+  const router = useRouter()
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -16,8 +17,6 @@ const login = () => {
       }
     }
   }, [])
-
-  const router = useRouter()
 
   const handleSubmit = async (values) => {
     try {

@@ -18,6 +18,8 @@ const Dashboard = () => {
         user.firstname = localStorage.firstname
         user.lastname = localStorage.lastname
         user.email = localStorage.email
+      } else {
+        route.push('/login');
       }
     }
   }, [])
