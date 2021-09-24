@@ -20,8 +20,24 @@ const Settings = () => {
   const fetchProfile = async () => {
     try {
       console.log('hereee')
-      const request = await axios.get(`${process.env.API_URL}users/profile`);
-      console.log('>>>>>>',request);
+      const req = await axios.get('https://edustripe.herokuapp.com/api/v1/users/profile').then(response => {
+        console.log('ress', response)
+        console.log('reqq', req)
+        // if(response.data.status === 'success') {
+        //   setIsLoading(false)
+        //   // localStorage.setItem('user_token', accessToken)
+        //   // localStorage.setItem('firstname', user.firstName)
+        //   // localStorage.setItem('lastname', user.lastName)
+        //   // localStorage.setItem('email', user.email)
+        //   // return response.data.data;
+        // } else {
+        //   return console.log('Error response', response);
+        // }
+      }).catch(error => {
+        // setErrorMessage('Signup failed, check your details and try again')
+        // setIsLoading(false)
+        console.log('err',error)
+      });
     } catch (error) {
       console.log('>error>',error);
 
