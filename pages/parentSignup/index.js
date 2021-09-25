@@ -22,8 +22,8 @@ const ParentSignup = () => {
   const handleSubmit = async (values) => {
     try {
       setIsLoading(true);
-      const { firstName, lastName, phoneNumber, email, password, confirmPassword } = values;
-      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, phoneNumber, password, confirmPassword }).then(response => {
+      const { firstName, lastName, email, password, confirmPassword } = values;
+      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, password, confirmPassword }).then(response => {
         if(response.data.status === 'success') {
           setIsLoading(false)
           const { user, accessToken } = response.data.data;
@@ -115,7 +115,7 @@ const ParentSignup = () => {
               />
             </Form.Item>
           </div>
-          <div className="input-div">
+          {/* <div className="input-div">
             <Form.Item
               label="Phone Number"
               name="phoneNumber"
@@ -133,7 +133,7 @@ const ParentSignup = () => {
                 id="phoneNumber"
               />
             </Form.Item>
-          </div>
+          </div> */}
           <div className="input-div">
           <Form.Item
               label="Password"
