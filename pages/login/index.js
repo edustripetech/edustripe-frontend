@@ -24,7 +24,7 @@ const login = () => {
     try {
       setIsLoading(true);
       const { email, password } = values;
-      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-in', { email, password }).then(response => {
+      await axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-in', { email, password }).then(response => {
         if(response.data.status === 'success') {
           setIsLoading(false)
           const { user, accessToken } = response.data.data;
