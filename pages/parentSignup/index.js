@@ -23,9 +23,7 @@ const ParentSignup = () => {
     try {
       setIsLoading(true);
       const { firstName, lastName, email, password, confirmPassword } = values;
-      console.log('signup vals',firstname, lastname, email, password)
-      const req = await axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, password, confirmPassword }).then(response => {
-        console.log('request', req)
+      axios.post('https://edustripe.herokuapp.com/api/v1/auth/sign-up', { firstName, lastName, email, password, confirmPassword }).then(response => {
         if(response.data.status === 'success') {
           setIsLoading(false)
           const { user, accessToken } = response.data.data;
